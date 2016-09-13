@@ -1,0 +1,32 @@
+FROM Dog d inner join d.person WHERE d.person.name = 'Mary'
+FROM Dog d WHERE d.person.name = 'Mary'
+
+FROM Person p where p.address.streetName = 'Street B'
+FROM Person p inner join p.address a where a.streetName = 'Street B'
+FROM Person p inner join p.address a where p.address.streetName = 'Street B'
+
+SELECT p FROM Person p inner join p.address a where a.streetName = 'Street B'
+
+Select a.streetName FROM Address a
+Select p.address.streetName FROM Person p
+Select a.streetName FROM Person p inner join p.address a
+
+SELECT d.name FROM Person p join p.dogs d
+SELECT d.name FROM Person p join p.dogs d where p.id = 1
+SELECT d.name FROM Person p join p.dogs d where p.id = 1 and d.id = 1
+
+From Person p, Dog d WHERE p.id=1 and d.id =1
+FROM Person p join p.dogs d with d.id=1
+
+SELECT p.dogs FROM Person p
+SELECT p.dogs FROM Person p where p.id = 1
+
+JOIN IMPLICITO 
+Sólo puede hacerse cuando tenemos una relación uno a uno o muchos a uno, o sea, no funciona cuando la propiedad es una colección.
+FROM Person p WHERE p.dogs.id = 1 -> Da un error porque no se puede acceder a un elemto de una coleccion con un join implicito
+Solucion -> FROM Person p inner join p.dogs d Where d.id = 1
+o filtrando el nombre -> SELECT p.name FROM Person p inner join p.dogs d Where d.id =1 
+
+
+FROm Dog d Where d.name = :name
+name-Yellow-string
